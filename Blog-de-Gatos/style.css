@@ -1,0 +1,292 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root{
+    font-size: 62.5%;
+    --color-base-black-text-700: hsl(240, 6%, 13%);
+    --color-base-black-text-400: hsl(240, 5%, 7%);
+    --color-base-white: hsl(0, 0%, 100%);
+    --color-base-white-opaque: hsla(0, 0%, 100%, 0.20);
+    --color-base-background: hsl(195, 91%, 25%);
+    --color-base-footer: hsl(195, 46%, 40%);
+}
+
+html,body,input{
+    font-family: 'Mulish', sans-serif;
+}
+
+.app{
+    display: grid;
+    grid-template-areas: 
+    "a"
+    "b"
+    "c"
+    "d";
+}
+
+header{
+    grid-area: a;
+    background-color: var(--color-base-background);
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.logo{
+    margin: 1.5rem 3rem;
+    width: clamp(2.5rem, 4rem, 4.2rem);
+    height: clamp(2.5rem, 4rem, 4.2rem);
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.input-wrapper label{
+    
+    width: 100%;
+    height: 4rem;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    
+}
+
+.input-wrapper input{
+    width: 100%;
+    padding: 1.6rem 1.2rem;
+    
+    background-color: var(--color-base-white-opaque);
+    border: 0;
+    border-radius: 0.4rem;
+    
+    font-weight: 600;
+    font-size:1.6rem; 
+}
+
+.input-wrapper input::placeholder {
+    color: var(--color-base-white);
+    
+}
+
+.profile{
+    margin: 1.5rem 3rem;
+    width: clamp(2.5rem, 4rem, 4.2rem);
+    height: clamp(2.5rem, 4rem, 4.2rem);
+    object-fit: cover;
+    border-radius: 50%;
+    justify-self: end;
+}
+
+main{
+    grid-area: b;
+    width: clamp(20rem, fit-content, 80rem);
+    
+}
+
+
+main img{
+    margin-bottom: 3rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1{
+    margin-left: 3rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: var(--color-base-black-text-700);
+    gap: 1rem;
+}
+
+button{
+    background-color: var(--color-base-background);
+    padding: 1.3rem;
+    width: 4rem;
+    height: 4rem;
+    
+    border: none;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+button.like{
+    margin-left: 3rem;
+}
+
+button.dislike{
+    margin-left: 1.2rem;
+}
+
+
+main p{
+    font-weight: 400;
+    font-size: 1.6rem;
+    color: var(--color-base-black-text-400);
+    
+    margin: 3rem; 
+}
+
+section{
+    grid-area: c;
+    padding-left: 2rem;
+}
+
+section img{
+    object-fit: cover;
+    place-self: center;
+}
+
+section h1{
+    margin: 0;
+}
+
+section h2{
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--color-base-black-text-700);
+}
+
+section p{
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--color-base-black-text-400);
+    
+}
+
+figure{
+    display: grid;
+    grid-template-areas: 
+    "figure.img .Story"
+    "figure.img .Story"
+    "figure.img .Story"
+    "figure.img .Story"
+    "figure.img .Story";
+    
+    justify-content: left;
+    margin-top: 3rem;
+    
+}
+
+figure:nth-child(6){
+    padding-bottom: 2rem;
+}
+
+.story{
+    padding-left: 1.5rem;
+}
+
+footer{
+    grid-area: d;
+    background-color: var(--color-base-footer);
+}
+
+footer p{
+    margin: 0;
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-base-white);
+}
+
+/*-----------------------------------------animation-------------------------------------------------*/
+
+header{
+    --startY: -100%;
+    animation: move .2s;
+}
+
+footer{
+    --startY: 100%;
+    animation: move .2s;
+}
+
+@keyframes move{
+    from{
+        transform: translateY(var(--startY));
+    }
+}
+
+figure{
+    --delay: .4s;
+    animation: appear .4s var(--delay) backwards;
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+/*--------------------------------------------------------Media---------------------------------------------------------------------------------*/
+
+@media (min-width:1300px){
+    
+    
+    header{
+        grid-area: a;
+        padding: 0 7rem;
+    }
+    
+    .app{
+        display: grid;
+        grid-template-areas: 
+        "a a"
+        "b c"
+        "d d";
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    main{
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+        padding-left: 9rem;
+        grid-area: b;
+        
+    }
+    
+    section{
+        padding-top: 4rem;
+        padding-left: 3rem;
+        padding-right: 7rem;
+        grid-area: c;
+    }
+    
+    
+    .title{
+        display: grid;
+        grid-template-areas: 
+        "a b";
+        grid-template-columns: 1fr, 1fr;
+    }
+    
+    .content-reaction{
+        justify-self: right;
+    }
+    
+    main h1, main p{
+        margin: 0;
+    }
+    
+    main p{
+        margin: 3rem 0;
+        text-align: left;
+    } 
+    
+    footer{
+        grid-area: d;
+    }
+    
+}
